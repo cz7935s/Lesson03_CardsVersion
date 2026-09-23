@@ -2,10 +2,13 @@ namespace Toolkit;
 
 public record Deck
 {
+    //factory method: it is impossible to create an invalid deck here, it will always be a standard deck
     public static Deck CreateStandardDeck() => new Deck();
 
     private readonly List<Card> _cards;
 
+    private Deck(List<Card> fromcards) => _cards = fromcards;
+    
     private Deck()
     {
         _cards = new List<Card>();
@@ -33,20 +36,25 @@ public record Deck
 
     public Deck Split()
     {
-        throw new NotImplementedException("Split method is not implemented yet.");
+        Deck other = new Deck(_cards.Take(_cards.Count / 2).ToList());
+        _cards.RemoveRange(0, _cards.Count / 2);
+        return other;
+        // throw new NotImplementedException("Split method is not implemented yet.");
         // TODO: Implement the Split method to return a new Deck with half-ish of the cards.
     }
 
     public Deck Cut()
     {
         throw new NotImplementedException("Cut method is not implemented yet.");
-        // TODO: How is Cut different from Split? 
+        // TODO: How is Cut different from Split?
     }
 
     public Card DealOne()
     {
         if (_cards.Count == 0)
             throw new InvalidOperationException("No cards left in the deck.");
+        // a valid way to do it: return null; 
+        // another way: i can try to give you a card but can't guarantee that 
 
         var card = _cards[0];
         _cards.RemoveAt(0);
@@ -55,7 +63,7 @@ public record Deck
 
     public List<Card> Deal(int count)
     {
-        var dealtCards = [];
+        var dealtCards = new List<Card>();
         for (int i = 0; i < count; i++)
         {
             dealtCards.Add(DealOne());
