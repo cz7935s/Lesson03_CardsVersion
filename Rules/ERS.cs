@@ -13,7 +13,7 @@ public static class ERSRules
             {
                 Console.WriteLine("A face card, " + card.Value + " was played!");
             }
-        }
+        } 
         
         public List<Deck> DealStartingHands(int numberOfPlayers, int cardsPerPlayer)
         {
