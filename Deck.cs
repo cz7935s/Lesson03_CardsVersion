@@ -43,10 +43,16 @@ public record Deck
         // TODO: Implement the Split method to return a new Deck with half-ish of the cards.
     }
 
-    public Deck Cut()
+    public void Cut()
     {
-        throw new NotImplementedException("Cut method is not implemented yet.");
+        //throw new NotImplementedException("Cut method is not implemented yet.");
         // TODO: How is Cut different from Split?
+
+        Random random = new Random();
+        int cutPoint = random.Next(_cards.Count);
+        List<Card> cut = _cards.Take(cutPoint).ToList();
+        _cards.RemoveRange(0, cutPoint);
+        _cards.AddRange(cut);
     }
 
     public Card DealOne()
@@ -72,4 +78,11 @@ public record Deck
     }
 
     public int Count => _cards.Count;
+    
+    public Deck DealHand(int count)
+    {
+        return new Deck(Deal(count));
+    }
+
 }
+
