@@ -1,3 +1,5 @@
+using LanguageExt;
+
 namespace Toolkit;
 
 public record Deck
@@ -55,13 +57,23 @@ public record Deck
         _cards.AddRange(cut);
     }
 
-    public Card DealOne()
+    // public Card DealOne()
+    // {
+    //     if (_cards.Count == 0)
+    //         throw new InvalidOperationException("No cards left in the deck.");
+    //     // a valid way to do it: return null; 
+    //     // another way: i can try to give you a card but can't guarantee that 
+    //
+    //     var card = _cards[0];
+    //     _cards.RemoveAt(0);
+    //     return card;
+    // }
+
+    public Card? DealOne()
     {
         if (_cards.Count == 0)
-            throw new InvalidOperationException("No cards left in the deck.");
-        // a valid way to do it: return null; 
-        // another way: i can try to give you a card but can't guarantee that 
-
+            return null;
+        
         var card = _cards[0];
         _cards.RemoveAt(0);
         return card;
@@ -72,10 +84,14 @@ public record Deck
         var dealtCards = new List<Card>();
         for (int i = 0; i < count; i++)
         {
-            dealtCards.Add(DealOne());
+            var card = DealOne();
+            if(card is not null)
+              dealtCards.Add(card);
         }
         return dealtCards;
     }
+    
+    // but what if theres a null card? u might get the number of cards u asked for, but you might also get less than that! 
 
     public int Count => _cards.Count;
     

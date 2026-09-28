@@ -17,3 +17,6 @@ C:/Users/jcox/Documents/GitHub/Lesson03_CardsVersion/obj/Debug/net10.0/Lesson03_
 /Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/obj/Debug/net10.0/Lesson03_ExtensionsAndConcerns.pdb
 /Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/obj/Debug/net10.0/Lesson03_ExtensionsAndConcerns.genruntimeconfig.cache
 /Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/obj/Debug/net10.0/ref/Lesson03_ExtensionsAndConcerns.dll
+/Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/obj/Debug/net10.0/Lesson03_ExtensionsAndConcerns.csproj.AssemblyReference.cache
+/Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/bin/Debug/net10.0/LanguageExt.Core.dll
+/Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/obj/Debug/net10.0/Lesson03.D43189CA.Up2Date

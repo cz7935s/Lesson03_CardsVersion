@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XZsjFiaZSxI=",
+  "dgSpecHash": "FvMvzYmtlM4=",
   "success": true,
   "projectFilePath": "/Users/clairezhang/Documents/GitHub/Lesson03_CardsVersion/Lesson03_ExtensionsAndConcerns.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/clairezhang/.nuget/packages/languageext.core/5.0.0-beta-77/languageext.core.5.0.0-beta-77.nupkg.sha512"
+  ],
   "logs": []
 }
