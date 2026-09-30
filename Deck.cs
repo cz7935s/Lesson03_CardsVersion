@@ -7,7 +7,7 @@ public record Deck
     //factory method: it is impossible to create an invalid deck here, it will always be a standard deck
     public static Deck CreateStandardDeck() => new Deck();
 
-    private readonly List<Card> _cards;
+    private List<Card> _cards;
 
     private Deck(List<Card> fromcards) => _cards = fromcards;
     
@@ -45,17 +45,27 @@ public record Deck
         // TODO: Implement the Split method to return a new Deck with half-ish of the cards.
     }
 
-    public void Cut()
-    {
-        //throw new NotImplementedException("Cut method is not implemented yet.");
-        // TODO: How is Cut different from Split?
+    // public void Cut()
+    // {
+    //     //throw new NotImplementedException("Cut method is not implemented yet.");
+    //     // TODO: How is Cut different from Split?
+    //
+    //     Random random = new Random();
+    //     int cutPoint = random.Next(_cards.Count);
+    //     List<Card> cut = _cards.Take(cutPoint).ToList();
+    //     _cards.RemoveRange(0, cutPoint);
+    //     _cards.AddRange(cut);
+    // }
 
-        Random random = new Random();
-        int cutPoint = random.Next(_cards.Count);
-        List<Card> cut = _cards.Take(cutPoint).ToList();
-        _cards.RemoveRange(0, cutPoint);
-        _cards.AddRange(cut);
+    public Deck Cut(Random random)
+    {
+        var cutPoint = random.Next(_cards.Count);
+        var otherHalf = new Deck([.._cards[..cutPoint]]); // wild syntax with the .. 
+        _cards = [.._cards[cutPoint..]];
+
+        return otherHalf;
     }
+    
 
     // public Card DealOne()
     // {
@@ -100,5 +110,22 @@ public record Deck
         return new Deck(Deal(count));
     }
 
+    public void AddCardsOnTop(params List<Card> cards)
+        => _cards = [..cards, .._cards];
+
+    public void AddCardsOnBottom(params List<Card> cards)
+        => _cards = [.. _cards, .. cards];
+
+    public void InsertCardsRandomly(Random random, params List<Card> cards)
+    {
+        var otherHalf  = Cut(random);
+
+        _cards = [.. _cards, .. cards, ..otherHalf._cards];
+
+    }
+
+
 }
+
+
 
