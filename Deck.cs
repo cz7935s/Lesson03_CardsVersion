@@ -27,13 +27,18 @@ public record Deck
     /// Shuffles the deck of cards!
     /// </summary>
     /// <param name="random">Inject your RNG here!</param>
-    public void Shuffle(Random random)
+    // public void Shuffle(Random random)
+    // {
+    //     for (int i = _cards.Count - 1; i > 0; i--)
+    //     {
+    //         int j = random.Next(i + 1);
+    //         (_cards[i], _cards[j]) = (_cards[j], _cards[i]);
+    //     }
+    // }
+
+    public void Shuffle(Random random, Action<Deck, Random> shuffleAlgorithm)
     {
-        for (int i = _cards.Count - 1; i > 0; i--)
-        {
-            int j = random.Next(i + 1);
-            (_cards[i], _cards[j]) = (_cards[j], _cards[i]);
-        }
+        shuffleAlgorithm(this, random);
     }
 
     public Deck Split()
