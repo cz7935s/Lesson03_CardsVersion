@@ -6,6 +6,7 @@ public record Deck
 {
     //factory method: it is impossible to create an invalid deck here, it will always be a standard deck
     public static Deck CreateStandardDeck() => new Deck();
+    public static Deck CreateEmpty() => new Deck([]);
 
     private List<Card> _cards;
 
